@@ -30,10 +30,10 @@ test('Shuffle an integer array', () => {
 });
 
 test('Apply a function N times', () => {
-    expect(applyN((x: number) => x + 1, 5)(1)).toBe(6);
-    expect(applyN((x: number) => x * x, 4)(2)).toBe(65536);
+  expect(applyN((x: number) => x + 1, 5)(1)).toBe(6);
+  expect(applyN((x: number) => x * x, 4)(2)).toBe(65536);
 });
-  
+
 test('Shuffle a deck of cards 8 times', () => {
   const cards: number[] = Array(52)
     .fill(0)
@@ -42,4 +42,5 @@ test('Shuffle a deck of cards 8 times', () => {
     .fill(0)
     .map((value, index) => index);
   expect(shuffleTimesN(cards, 8)).toEqual(newDeckOrder);
+  expect(shuffleTimesN(cards, 1)).not.toEqual(shuffleTimesN(cards, 2));
 });
