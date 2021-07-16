@@ -1,18 +1,14 @@
 # Setup
 
 ```
-npm install
+$ npm install
 ```
 
-# Running tests
-```
-$ cd <folder-name>
-$ node index.js
-```
+## Linting
 
-# Typescript
-
-Put new stuff in src/ folder.
+```
+$ npm run lint
+```
 
 Compile a single file
 ```
@@ -24,5 +20,8 @@ Watch files
 $ npx tsc -w 
 ```
 
+## Running tests
 
-
+```
+$ npm run test
+```

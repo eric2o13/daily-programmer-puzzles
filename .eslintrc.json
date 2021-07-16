@@ -1,5 +1,6 @@
 {
-  "extends": "eslint:recommended",
+  // "extends": "eslint:recommended",
+  "extends": "./node_modules/gts",
   "parser": "babel-eslint",
   "plugins": ["jest"]  
 }

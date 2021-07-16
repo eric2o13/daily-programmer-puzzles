@@ -44,7 +44,7 @@
 
 const R = require('ramda');
 
-export const matrix:number[][] = [
+export const matrix: number[][] = [
   [0, 0, 0, 0, 0, 0],
   [0, 1, 0, 0, 1, 0],
   [0, 0, 0, 0, 0, 0],
@@ -53,7 +53,10 @@ export const matrix:number[][] = [
   [1, 0, 0, 1, 0, 0],
 ];
 
-export const filter = (array:number[][]| number[][][], fn: (y:number,x:number,value:number) => boolean):number[][] => {
+export const filter = (
+  array: number[][] | number[][][],
+  fn: (y: number, x: number, value: number) => boolean
+): number[][] => {
   const map = [];
   for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
@@ -65,16 +68,22 @@ export const filter = (array:number[][]| number[][][], fn: (y:number,x:number,va
   return map;
 };
 
-export const distance = ([y, x]:number[], [row, column]:number[]) =>
+export const distance = ([y, x]: number[], [row, column]: number[]) =>
   Math.abs(y - row) + Math.abs(x - column);
-export const coordinatesWithinDistance = ([y, x]:number[], [row, column]:number[], k:number):boolean =>
-  distance([y, x], [row, column]) <= k;
-export const coordinatesAreEqual = ([y, x]:number[], [row, column]:number[]): boolean =>
-  y === row && x === column;
-export const slotIsNotOccupied = ([y, x]:number[]): boolean => matrix[y][x] === 0;
-export const slotIsOccupied = ([y, x]:number[]): boolean => matrix[y][x] === 1;
+export const coordinatesWithinDistance = (
+  [y, x]: number[],
+  [row, column]: number[],
+  k: number
+): boolean => distance([y, x], [row, column]) <= k;
+export const coordinatesAreEqual = (
+  [y, x]: number[],
+  [row, column]: number[]
+): boolean => y === row && x === column;
+export const slotIsNotOccupied = ([y, x]: number[]): boolean =>
+  matrix[y][x] === 0;
+export const slotIsOccupied = ([y, x]: number[]): boolean => matrix[y][x] === 1;
 
-export const findSlotsWithinDistance = ([row, column]:number[], k:number) =>
+export const findSlotsWithinDistance = ([row, column]: number[], k: number) =>
   filter(
     matrix,
     (y, x) =>
@@ -83,8 +92,7 @@ export const findSlotsWithinDistance = ([row, column]:number[], k:number) =>
       !coordinatesAreEqual([y, x], [row, column])
   );
 
-
-export const possibleLocations = (k:number) => {
+export const possibleLocations = (k: number) => {
   const coordinates = filter(matrix, (y, x) => slotIsOccupied([y, x])).map(
     slot => findSlotsWithinDistance(slot, k)
   );
@@ -94,4 +102,3 @@ export const possibleLocations = (k:number) => {
     )
   );
 };
-
