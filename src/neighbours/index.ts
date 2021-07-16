@@ -1,5 +1,3 @@
-/*jshint esversion: 6 */
-
 /*
 
     Given this matrix that represents a neighbourhood

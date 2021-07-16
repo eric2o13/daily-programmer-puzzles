@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */
 import {applyN, separate, riffle, shuffle, shuffleTimesN} from './index';
 
 test('Seperate an array in N (sort of) equal parts', () => {
