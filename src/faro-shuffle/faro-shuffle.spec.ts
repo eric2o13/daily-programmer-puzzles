@@ -34,7 +34,7 @@ test('Apply a function N times', () => {
   expect(applyN((x: number) => x * x, 4)(2)).toBe(65536);
 });
 
-test('Shuffle a deck of cards 8 times', () => {
+test('Shuffle a deck of cards N times', () => {
   const cards: number[] = Array(52)
     .fill(0)
     .map((value, index) => index);
