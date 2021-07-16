@@ -19,7 +19,6 @@
   Spoiler alert: every amateur magician knows the answer, show your calculations.
 
 */
-
 const R = require('ramda');
 
 export const separate = (
@@ -34,10 +33,12 @@ export const separate = (
 export const toPairs = (parts: number[][]): number[][] =>
   parts[0].map((c: number, i: number) => [parts[0][i], parts[1][i]]);
 
-export const riffle = (parts: number[][]): number[] => toPairs(parts).flat(1);
+export const riffle = (parts: number[][]): number[][] => toPairs(parts);
+
+export const bridge = (cards: number[][]): number[] => cards.flat(1);
 
 export const shuffle = (cards: number[]): number[] =>
-  R.pipe(separate, riffle)(cards);
+  R.pipe(separate, riffle, bridge)(cards);
 
 export const applyN = R.compose(R.reduceRight(R.compose, R.identity), R.repeat);
 

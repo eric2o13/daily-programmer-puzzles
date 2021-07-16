@@ -2,31 +2,40 @@
 import {applyN, separate, riffle, shuffle, shuffleTimesN} from './index';
 
 test('Seperate an array in N (sort of) equal parts', () => {
-  expect(separate([1, 2, 3, 4, 5, 6])).toEqual([
+  const integerList: number[] = [1, 2, 3, 4, 5, 6];
+  const twoEqualParts: number[][] = [
     [1, 2, 3],
     [4, 5, 6],
-  ]);
-  expect(separate([1, 2, 3, 4, 5, 6], 3)).toEqual([
+  ];
+  const threeEqualParts: number[][] = [
     [1, 2],
     [3, 4],
     [5, 6],
-  ]);
+  ];
+  expect(separate(integerList)).toEqual(twoEqualParts);
+  expect(separate(integerList, 3)).toEqual(threeEqualParts);
   expect(separate([])).toEqual([]);
 });
 
 test('Merge 2 arrays maintaining index priority', () => {
-  expect(
-    riffle([
-      [1, 2, 3, 4, 5],
-      [6, 7, 8, 9, 10],
-    ])
-  ).toEqual([1, 6, 2, 7, 3, 8, 4, 9, 5, 10]);
+  const cardStacks: number[][] = [
+    [1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10],
+  ];
+  const paired: number[][] = [
+    [1, 6],
+    [2, 7],
+    [3, 8],
+    [4, 9],
+    [5, 10],
+  ];
+  expect(riffle(cardStacks)).toEqual(paired);
 });
 
 test('Shuffle an integer array', () => {
-  expect(shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toEqual([
-    1, 6, 2, 7, 3, 8, 4, 9, 5, 10,
-  ]);
+  const cards: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const shuffled: number[] = [1, 6, 2, 7, 3, 8, 4, 9, 5, 10];
+  expect(shuffle(cards)).toEqual(shuffled);
 });
 
 test('Apply a function N times', () => {
