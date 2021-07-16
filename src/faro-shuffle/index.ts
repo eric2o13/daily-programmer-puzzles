@@ -36,10 +36,10 @@ export const toPairs = (parts: number[][]): number[][] =>
 
 export const riffle = (parts: number[][]): number[] => toPairs(parts).flat(1);
 
-export const applyN = R.compose(R.reduceRight(R.compose, R.identity), R.repeat);
-
 export const shuffle = (cards: number[]): number[] =>
   R.pipe(separate, riffle)(cards);
+
+export const applyN = R.compose(R.reduceRight(R.compose, R.identity), R.repeat);
 
 export const shuffleTimesN = (cards: number[], n: number): number[] =>
   applyN(shuffle, n)(cards);
