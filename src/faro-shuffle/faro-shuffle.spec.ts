@@ -1,18 +1,12 @@
-import {applyN, separate, riffle, shuffle, shuffleTimesN} from './index';
+import {applyN, separate, interlace, shuffle, shuffleTimesN} from './index';
 
-test('Seperate an array in N (sort of) equal parts', () => {
+test('Seperate an array in 2 (sort of) equal parts', () => {
   const integerList: number[] = [1, 2, 3, 4, 5, 6];
   const twoEqualParts: number[][] = [
     [1, 2, 3],
     [4, 5, 6],
   ];
-  const threeEqualParts: number[][] = [
-    [1, 2],
-    [3, 4],
-    [5, 6],
-  ];
   expect(separate(integerList)).toEqual(twoEqualParts);
-  expect(separate(integerList, 3)).toEqual(threeEqualParts);
   expect(separate([])).toEqual([]);
 });
 
@@ -28,7 +22,7 @@ test('Merge 2 arrays maintaining index priority', () => {
     [4, 9],
     [5, 10],
   ];
-  expect(riffle(cardStacks)).toEqual(paired);
+  expect(interlace(cardStacks)).toEqual(paired);
 });
 
 test('Shuffle an integer array', () => {

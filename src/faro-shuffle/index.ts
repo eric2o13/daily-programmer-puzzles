@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */
 /*
 
   Faro Shuffle a deck of cards.
@@ -21,24 +20,20 @@
 */
 const R = require('ramda');
 
-export const separate = (
-  list: number[],
-  n: number = 2
-): number[][] | number[] => {
+export const separate = (list: number[]): number[][] | number[] => {
+  const n: number = 2;
   const fn = (_v: number, i: number): number =>
     Math.floor((i * n) / list.length);
   return R.values(R.addIndex(R.groupBy)(fn, list));
 };
 
-export const toPairs = (parts: number[][]): number[][] =>
-  parts[0].map((c: number, i: number) => [parts[0][i], parts[1][i]]);
+export const interlace = (parts: number[][]): number[][] =>
+  R.zip(parts[0], parts[1]);
 
-export const riffle = (parts: number[][]): number[][] => toPairs(parts);
-
-export const bridge = (cards: number[][]): number[] => cards.flat(1);
+export const bridge = (cards: number[][]): number[] => R.unnest(cards);
 
 export const shuffle = (cards: number[]): number[] =>
-  R.pipe(separate, riffle, bridge)(cards);
+  R.pipe(separate, interlace, bridge)(cards);
 
 export const applyN = R.compose(R.reduceRight(R.compose, R.identity), R.repeat);
 
