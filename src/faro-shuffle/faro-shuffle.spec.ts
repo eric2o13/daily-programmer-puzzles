@@ -1,11 +1,6 @@
 /*jshint esversion: 6 */
 import {applyN, separate, riffle, shuffle, shuffleTimesN} from './index';
 
-test('Apply a function N times', () => {
-  expect(applyN((x: number) => x + 1, 5)(1)).toBe(6);
-  expect(applyN((x: number) => x * x, 4)(2)).toBe(65536);
-});
-
 test('Seperate an array in N (sort of) equal parts', () => {
   expect(separate([1, 2, 3, 4, 5, 6])).toEqual([
     [1, 2, 3],
@@ -34,6 +29,11 @@ test('Shuffle an integer array', () => {
   ]);
 });
 
+test('Apply a function N times', () => {
+    expect(applyN((x: number) => x + 1, 5)(1)).toBe(6);
+    expect(applyN((x: number) => x * x, 4)(2)).toBe(65536);
+});
+  
 test('Shuffle a deck of cards 8 times', () => {
   const cards: number[] = Array(52)
     .fill(0)
