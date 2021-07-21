@@ -40,7 +40,7 @@ test('Shuffle a deck of cards N times', () => {
   const cards: number[] = Array(52)
     .fill(0)
     .map((value, index) => index);
-  const newDeckOrder:number[] = Array(52)
+  const newDeckOrder: number[] = Array(52)
     .fill(0)
     .map((value, index) => index);
   expect(shuffleTimesN(cards, 8)).toEqual(newDeckOrder);

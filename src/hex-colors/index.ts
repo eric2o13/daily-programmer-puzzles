@@ -24,8 +24,8 @@ export const hexToRgb = (hex: string): number[] => {
 };
 
 export const blend = (c1: string, c2: string): string => {
-  const a = hexToRgb(c1);
-  const b = hexToRgb(c2);
+  const a: number[] = hexToRgb(c1);
+  const b: number[] = hexToRgb(c2);
   const color: number[] = R.zip(a, b).map((values: number[]) =>
     Math.floor(average(values))
   );
