@@ -1,10 +1,5 @@
 const R = require('ramda');
 
-/*
-  Find path through maze.
-  Doesn't need to be the fastest path.
-*/
-
 export type Coordinates = number[];
 export type CoordinatesList = Coordinates[];
 export type Matrix = string[][] | CoordinatesList;
@@ -171,10 +166,3 @@ export const findPath = (
   return traversed;
 };
 
-// const start: Coordinates = findCoordinates(maze, (y, x) =>
-//   slotIsStartPoint([y, x], maze)
-// );
-// const end: Coordinates = findCoordinates(maze, (y, x) =>
-//   slotIsEndPoint([y, x], maze)
-// );
-// console.log(findPath(start,end,maze))

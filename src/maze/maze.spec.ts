@@ -1,20 +1,3 @@
-/*
-
-#######
-O     #
-# # # #
-### # #
-# # # #
-#X    #
-#######
-
-You may produce additional output if you desire, but the solution as described above must be included.
-
-A. Find a path to the end
-B. Get the number of steps in your fasted way to X
-
-*/
-
 import {
   canMoveEast,
   canMoveNorth,
